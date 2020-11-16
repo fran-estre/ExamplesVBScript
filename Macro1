@@ -1,0 +1,22 @@
+Dim seEjecutoMacro1 As Boolean
+Sub Macro1()
+    If Not (seEjecutoMacro1) Then
+        seEjecutoMacro1 = True
+        Selection.HomeKey Unit:=wdStory
+        For i = 0 To Documents(1).Paragraphs.Count Step 1
+            Selection.MoveRight Unit:=wdWord, Count:=1, Extend:=wdExtend
+            Selection.Font.Grow
+            Selection.Font.Grow
+            wUnits = Selection.Move(Unit:=wdParagraph, Count:=1)
+        Next
+    Else
+        seEjecutoMacro1 = False
+        Selection.HomeKey Unit:=wdStory
+        For i = 0 To Documents(1).Paragraphs.Count Step 1
+            Selection.MoveRight Unit:=wdWord, Count:=1, Extend:=wdExtend
+            Selection.Font.Shrink
+            Selection.Font.Shrink
+            wUnits = Selection.Move(Unit:=wdParagraph, Count:=1)
+        Next
+    End If
+End Sub
